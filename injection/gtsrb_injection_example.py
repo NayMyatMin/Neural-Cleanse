@@ -11,8 +11,9 @@ import sys
 
 import keras
 import numpy as np
-from keras.layers import Conv2D, MaxPooling2D, Dense, Flatten, Dropout
-from keras.models import Sequential
+
+from tensorflow.keras import Sequential
+from tensorflow.keras.layers import Conv2D, MaxPooling2D, Dense, Flatten, Dropout
 
 sys.path.append("../")
 import utils_backdoor

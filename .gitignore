@@ -1,3 +1,8 @@
 
 results
 *.json
+__pycache__/utils_backdoor.cpython-36.pyc
+__pycache__/visualizer.cpython-36.pyc
+models/model1659915279.h5
+models/vgg16_GTSRB_32.h5
+models/vgg16_GTSRB.h5

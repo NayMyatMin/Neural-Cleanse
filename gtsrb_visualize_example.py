@@ -9,29 +9,33 @@ import time
 
 import numpy as np
 import random
-from tensorflow import set_random_seed
+
+import tensorflow
+
+tensorflow.random.set_seed(123)
 random.seed(123)
 np.random.seed(123)
-set_random_seed(123)
 
-from keras.models import load_model
-from keras.preprocessing.image import ImageDataGenerator
+
+from tensorflow.keras.models import load_model
+from tensorflow.keras.preprocessing.image import ImageDataGenerator
 
 from visualizer import Visualizer
 
 import utils_backdoor
 
-
 ##############################
 #        PARAMETERS          #
 ##############################
 
-DEVICE = '3'  # specify which GPU to use
+DEVICE = '0,1,2,3'  # specify which GPU to use
 
 DATA_DIR = 'data'  # data folder
 DATA_FILE = 'gtsrb_dataset_int.h5'  # dataset file
 MODEL_DIR = 'models'  # model directory
-MODEL_FILENAME = 'gtsrb_bottom_right_white_4_target_33.h5'  # model file
+# MODEL_FILENAME = 'gtsrb_bottom_right_white_4_target_33.h5'  # model file
+# MODEL_FILENAME = 'model1659915279.h5'  # model file
+MODEL_FILENAME = 'vgg16_GTSRB_32.h5'  # model file
 RESULT_DIR = 'results'  # directory for storing results
 # image filename template for visualization results
 IMG_FILENAME_TEMPLATE = 'gtsrb_visualize_%s_label_%d.png'
@@ -39,18 +43,21 @@ IMG_FILENAME_TEMPLATE = 'gtsrb_visualize_%s_label_%d.png'
 # input size
 IMG_ROWS = 32
 IMG_COLS = 32
+# IMG_ROWS = 64
+# IMG_COLS = 64
 IMG_COLOR = 3
 INPUT_SHAPE = (IMG_ROWS, IMG_COLS, IMG_COLOR)
 
 NUM_CLASSES = 43  # total number of classes in the model
-Y_TARGET = 33  # (optional) infected target label, used for prioritizing label scanning
+Y_TARGET = 17  # (optional) infected target label, used for prioritizing label scanning
 
 INTENSITY_RANGE = 'raw'  # preprocessing method for the task, GTSRB uses raw pixel intensities
 
 # parameters for optimization
+# BATCH_SIZE = 1  # batch size used for optimization VGG
 BATCH_SIZE = 32  # batch size used for optimization
 LR = 0.1  # learning rate
-STEPS = 1000  # total optimization iterations
+STEPS = 100  # total optimization iterations
 NB_SAMPLE = 1000  # number of samples in each mini batch
 MINI_BATCH = NB_SAMPLE // BATCH_SIZE  # mini batch size used for early stop
 INIT_COST = 1e-3  # initial weight used for balancing two objectives
