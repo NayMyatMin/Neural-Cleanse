@@ -287,3 +287,7 @@ BekgiumTSC_results/BekgiumTSC_visualize_pattern_label_60.png
 BekgiumTSC_results/BekgiumTSC_visualize_pattern_label_61.png
 models/vgg16_model_BelgiumTSC_128_0.8905_no_spin.h5
 models/vgg16_model_BelgiumTSC_128_0.9000.h5
+CBLST_results/*
+Origianl_results/*
+*.hdf5
+*.h5

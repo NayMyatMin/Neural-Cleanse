@@ -31,16 +31,17 @@ import utils_backdoor
 DEVICE = '0'  # specify which GPU to use
 
 DATA_DIR = 'data'  # data folder
-DATA_FILE = 'dataset_BekgiumTSC_flared.hdf5'  # dataset file
+DATA_FILE = 'BelgiumTSC_X_test_Y_test.hdf5'  # dataset file
 MODEL_DIR = 'models'  # model directory
 # MODEL_FILENAME = 'gtsrb_bottom_right_white_4_target_33.h5'  # model file
 # MODEL_FILENAME = 'model1659915279.h5'  # model file
-MODEL_FILENAME = 'vgg16_model_BelgiumTSC_128_0.8905_no_spin.h5'  # model file
-RESULT_DIR = 'BekgiumTSC_results'  # directory for storing results
+MODEL_FILENAME = 'belgiumTSC_VGG_CBLST.h5'  # model file
+# MODEL_FILENAME = 'belgiumTSC_VGG_Original.h5'  # model file
+RESULT_DIR = 'CBLST_results'  # directory for storing results
 # image filename template for visualization results
-IMG_FILENAME_TEMPLATE = 'BekgiumTSC_visualize_%s_label_%d.png'
+IMG_FILENAME_TEMPLATE = 'CBLST_visualize_%s_label_%d.png'
 
-# input size
+# input sizes
 IMG_ROWS = 128
 IMG_COLS = 128
 # IMG_ROWS = 64
@@ -51,8 +52,8 @@ INPUT_SHAPE = (IMG_ROWS, IMG_COLS, IMG_COLOR)
 NUM_CLASSES = 62  # total number of classes in the model
 Y_TARGET = 18  # (optional) infected target label, used for prioritizing label scanning
 
-INTENSITY_RANGE = 'imagenet'  # preprocessing method for the task, GTSRB uses raw pixel intensities
-
+INTENSITY_RANGE = 'raw'  # preprocessing method for the task, GTSRB uses raw pixel intensities
+# INTENSITY_RANGE = 'imagenet'  # preprocessing method for the task, GTSRB uses raw pixel intensities
 # parameters for optimization
 # BATCH_SIZE = 1  # batch size used for optimization VGG
 BATCH_SIZE = 64  # batch size used for optimization

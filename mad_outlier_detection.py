@@ -16,9 +16,10 @@ from keras.preprocessing import image
 #        PARAMETERS          #
 ##############################
 
-RESULT_DIR = 'BekgiumTSC_results'  # directory for storing results
-IMG_FILENAME_TEMPLATE = 'BekgiumTSC_visualize_%s_label_%d.png'  # image filename template for visualization results
-
+RESULT_DIR = 'CBLST_results'  # directory for storing results
+IMG_FILENAME_TEMPLATE = 'CBLST_visualize_%s_label_%d.png'  # image filename template for visualization results
+# RESULT_DIR = 'Origianl_results'  # directory for storing results
+# IMG_FILENAME_TEMPLATE = 'Origianl_visualize_%s_label_%d.png'  # image filename template for visualization results
 # input size
 IMG_ROWS = 128
 IMG_COLS = 128
