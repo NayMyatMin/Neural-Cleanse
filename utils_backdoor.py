@@ -8,7 +8,15 @@
 import h5py
 import numpy as np
 import tensorflow as tf
-from keras.preprocessing import image
+from tensorflow.keras.preprocessing import image
+from tensorflow.compat.v1.keras.backend import set_session
+
+
+import logging
+import os
+os.environ['TF_CPP_MIN_LOG_LEVEL'] = '3'  # FATAL
+logging.getLogger('tensorflow').setLevel(logging.FATAL)
+
 
 tf.compat.v1.disable_eager_execution()
 
@@ -19,7 +27,7 @@ def dump_image(x, filename, format):
 
 
 def fix_gpu_memory(mem_fraction=1):
-    import keras.backend as K
+    import tensorflow.compat.v1.keras.backend as K
    
 
     gpu_options = tf.compat.v1.GPUOptions(per_process_gpu_memory_fraction=mem_fraction)
