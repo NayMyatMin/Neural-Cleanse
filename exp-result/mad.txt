@@ -1,0 +1,6 @@
+mad_outlier_detection.py start
+43 labels found
+median: 64.568626, MAD: 12.634077
+anomaly index: 4.207419
+flagged label list: 33: 11.411765
+elapsed time 0.01 s

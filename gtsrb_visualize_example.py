@@ -9,7 +9,9 @@ import time
 
 import numpy as np
 import random
-
+import os
+os.environ['TF_CPP_MIN_LOG_LEVEL'] = '3' 
+import tensorflow as tf
 import tensorflow
 
 tensorflow.random.set_seed(123)
@@ -33,9 +35,9 @@ DEVICE = '0,1,2,3'  # specify which GPU to use
 DATA_DIR = 'data'  # data folder
 DATA_FILE = 'gtsrb_dataset_int.h5'  # dataset file
 MODEL_DIR = 'models'  # model directory
-# MODEL_FILENAME = 'gtsrb_bottom_right_white_4_target_33.h5'  # model file
+MODEL_FILENAME = 'gtsrb_bottom_right_white_4_target_33.h5'  # model file
 # MODEL_FILENAME = 'model1659915279.h5'  # model file
-MODEL_FILENAME = 'vgg16_GTSRB_32.h5'  # model file
+# MODEL_FILENAME = 'vgg16_GTSRB_32.h5'  # model file
 RESULT_DIR = 'results'  # directory for storing results
 # image filename template for visualization results
 IMG_FILENAME_TEMPLATE = 'gtsrb_visualize_%s_label_%d.png'

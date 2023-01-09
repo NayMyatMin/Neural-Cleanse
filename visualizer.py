@@ -160,20 +160,20 @@ class Visualizer:
 
         def keras_preprocess(x_input, intensity_range):
 
-            if intensity_range is 'raw':
+            if intensity_range == 'raw':
                 x_preprocess = x_input
 
-            elif intensity_range is 'imagenet':
+            elif intensity_range == 'imagenet':
                 # 'RGB'->'BGR'
                 x_tmp = x_input[..., ::-1]
                 # Zero-center by mean pixel
                 mean = K.constant([[[103.939, 116.779, 123.68]]])
                 x_preprocess = x_tmp - mean
 
-            elif intensity_range is 'inception':
+            elif intensity_range == 'inception':
                 x_preprocess = (x_input / 255.0 - 0.5) * 2.0
 
-            elif intensity_range is 'mnist':
+            elif intensity_range == 'mnist':
                 x_preprocess = x_input / 255.0
 
             else:
@@ -183,20 +183,20 @@ class Visualizer:
 
         def keras_reverse_preprocess(x_input, intensity_range):
 
-            if intensity_range is 'raw':
+            if intensity_range == 'raw':
                 x_reverse = x_input
 
-            elif intensity_range is 'imagenet':
+            elif intensity_range == 'imagenet':
                 # Zero-center by mean pixel
                 mean = K.constant([[[103.939, 116.779, 123.68]]])
                 x_reverse = x_input + mean
                 # 'BGR'->'RGB'
                 x_reverse = x_reverse[..., ::-1]
 
-            elif intensity_range is 'inception':
+            elif intensity_range == 'inception':
                 x_reverse = (x_input / 2 + 0.5) * 255.0
 
-            elif intensity_range is 'mnist':
+            elif intensity_range == 'mnist':
                 x_reverse = x_input * 255.0
 
             else:
@@ -234,12 +234,12 @@ class Visualizer:
 
         self.loss_ce = categorical_crossentropy(output_tensor, y_true_tensor)
 
-        if self.regularization is None:
+        if self.regularization == None:
             self.loss_reg = K.constant(0)
-        elif self.regularization is 'l1':
+        elif self.regularization == 'l1':
             self.loss_reg = (K.sum(K.abs(self.mask_upsample_tensor)) /
                              self.img_color)
-        elif self.regularization is 'l2':
+        elif self.regularization == 'l2':
             self.loss_reg = K.sqrt(K.sum(K.square(self.mask_upsample_tensor)) /
                                    self.img_color)
 
