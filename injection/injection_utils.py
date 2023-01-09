@@ -5,11 +5,11 @@
 # @Link    : https://www.shawnshan.com/
 
 
-import keras
+import tensorflow.keras
 import numpy as np
 
 
-class BackdoorCall(keras.callbacks.Callback):
+class BackdoorCall(tensorflow.keras.callbacks.Callback):
     def __init__(self, clean_X, clean_Y, adv_gen):
         self.clean_X = clean_X
         self.clean_Y = clean_Y

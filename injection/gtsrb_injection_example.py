@@ -8,8 +8,9 @@
 import os
 import random
 import sys
+os.environ['TF_CPP_MIN_LOG_LEVEL'] = '3' 
 
-import keras
+import tensorflow.keras
 import numpy as np
 
 from tensorflow.keras import Sequential
@@ -81,7 +82,8 @@ def load_traffic_sign_model(base=32, dense=512, num_classes=43):
     model.add(Dropout(0.5))
     model.add(Dense(num_classes, activation='softmax'))
 
-    opt = keras.optimizers.adam(lr=0.001, decay=1 * 10e-5)
+    opt = tensorflow.optimizers.Adam(lr=0.001, decay=1 * 10e-5)
+
     model.compile(loss='categorical_crossentropy', optimizer=opt, metrics=['accuracy'])
 
     return model
@@ -103,7 +105,7 @@ def infect_X(img, tgt):
     adv_img = np.copy(raw_img)
 
     adv_img = injection_func(mask, pattern, adv_img)
-    return adv_img, keras.utils.to_categorical(tgt, num_classes=NUM_CLASSES)
+    return adv_img, tensorflow.keras.utils.to_categorical(tgt, num_classes=NUM_CLASSES)
 
 
 class DataGenerator(object):
